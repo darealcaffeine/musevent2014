@@ -1,0 +1,13 @@
+!= mse_title "My payments"
+
+- unless @payments.length
+  %span.no-payments You have no payments yet
+- else
+  %table.payments.table
+    %thead
+      %tr
+        %th Event
+        %th Tickets count
+        %th State
+        %th Actions
+    %tbody

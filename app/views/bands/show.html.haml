@@ -1,0 +1,9 @@
+= title @band.title
+.band.single
+  .row-fluid
+    .main.span9
+      .image.span4= link_to image_tag(@band.picture.url(:medium), alt: @band.title), @band.picture.url, target: 'blank'
+      .description= @band.description
+    .side.span3
+      %ul.actions
+        %li= link_to "Show events", band_events_path(@band), class: "btn btn-primary btn-large"

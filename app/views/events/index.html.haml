@@ -1,0 +1,28 @@
+= title 'Upcoming events'
+
+= form_tag events_url, method: 'get', class: "form-inline filter" do
+  %fieldset
+    = select_tag 'band_id', options_from_collection_for_select(Band.all, :id, :title, @query[:band_id]), prompt: "Any band"
+    = select_tag 'venue_id', options_from_collection_for_select(Venue.all, :id, :title, @query[:venue_id]), prompt: "Any venue"
+    /= select_tag 'state', options_for_select(Event.states_for_select.unshift(%w(Active none)), @filtering[:state])
+    = submit_tag "Refresh", class: "btn btn-primary"
+    = link_to "Events archive", archive_events_path, class: 'btn'
+
+- unless @events.empty?
+  .events.stacked
+    - @events.each do |event|
+      .event.stacked-item{id: "event_#{event.id}", class: event.state}
+        = link_to event, ref: "backbone" do
+          %h3= event.title
+          .image= image_tag event.picture.url(:medium), alt: event.title, class: "thumbnail"
+        %h4= "#{event.band_title} at #{event.venue_title}"
+        .description= event.description[0, 440]
+        .raising-info.item-bottom
+          = event_progressbar event
+          = event_metadata event
+        .actions.item-bottom
+          = link_to "More info", event, class: "btn", ref: "backbone"
+          = reserve_tickets_button event
+- else
+  %h5 No events found
+= paginate @events

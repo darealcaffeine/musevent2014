@@ -1,0 +1,6 @@
+!= mse_title @title || "Upcoming events"
+- if @events.length
+  .events.stacked
+  .clearfix
+- else
+  %h5 No events found

@@ -1,0 +1,16 @@
+.modal-header
+  %button.close{:type => "button", 'data-dismiss' => "modal"} &times;
+  %h3= @venue.get 'title'
+.modal-body
+  .band
+    .row-fluid
+      .image.span6
+        %img{src: @venue.get('picture').medium}
+      .info.span6
+        .events_count
+          = @venue.get 'events_count'
+          events
+        .address= @venue.get 'address'
+    .description= @venue.get 'description'
+.modal-footer
+  %a.btn.btn-primary{href: "/venues/#{@venue.get 'id'}/events"} Show events

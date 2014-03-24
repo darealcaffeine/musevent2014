@@ -1,0 +1,14 @@
+%a.show-event{href: "/events/#{@event.get 'id'}"}
+  %h3= @event.get 'title'
+  .image
+    %img.thumbnail{src: @event.get('picture').medium, alt: @event.get('title')}
+%h4
+  %a{href: "/bands/#{@event.get 'band_id'}"}= @event.get 'band_title'
+  at
+  %a{href: "/venues/#{@event.get 'venue_id'}"}= @event.get 'venue_title'
+.description = @event.get 'description'
+.actions.item-bottom
+  %a.show-event.btn{href: "/events/#{@event.get 'id'}"} More info
+  %a.new-payment.btn.btn-primary{href: "/events/#{@event.get 'id'}/payments/new"}
+    Reserve a ticket for
+    = "$#{@event.get('price')}"

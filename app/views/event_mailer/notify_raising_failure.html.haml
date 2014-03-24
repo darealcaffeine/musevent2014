@@ -1,0 +1,18 @@
+%p
+  By this email we notify you,
+  = "#{@user.email},"
+  that event named
+  = link_to @event.title, @event
+  haven't raised enough funds before
+  = @event.raising_end
+  and was moved to archive
+%p
+  It means that this event won't take place on
+  = @event.date
+%p
+  Also it means that we will soon release your payment for this event that we were holding
+  during the fund raising company.
+%p
+  We remind you that you can find tickets you purchased on
+  = link_to "your payments", payments_url
+  page.

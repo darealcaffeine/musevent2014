@@ -1,0 +1,1 @@
+class Musevent.Collection extends Backbone.Collection

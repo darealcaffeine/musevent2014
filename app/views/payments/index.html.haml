@@ -1,0 +1,17 @@
+= title 'My payments'
+%table.payments.table
+  %thead
+    %tr
+      %th Event
+      %th Tickets count
+      %th State
+      %th Actions
+  %tbody
+    - @payments.each do |payment|
+      %tr{id: "payment_#{payment.id}"}
+        %td= payment.event_title
+        %td= payment.tickets_count
+        %td= payment.state
+        %td= link_to "View info", payment
+.span12
+  = paginate @payments

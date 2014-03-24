@@ -1,0 +1,20 @@
+.modal-header
+  %button.close{:type => "button", 'data-dismiss' => "modal"} &times;
+  %h3 New payment
+.modal-body
+  .instruction
+    I want to go, I know what I am doing with my payment account, disclaimer, etc.
+  .form.form-horizontal
+    %input.hidden-submit{type: 'submit'} &nbsp;
+    .control-group
+      %label.control-label Tickets count
+      .controls
+        %input{type: 'text', name: 'tickets_count'}
+    .control-group
+      %label.control-label Pay with
+      .controls
+        %select{name: 'processor_type'}
+          - _.each Context.processor_types, (name, processor_type)->
+            %option{value: processor_type}= name
+.modal-footer
+  %a.submit_payment.btn.btn-primary Submit payment

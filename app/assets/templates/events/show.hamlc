@@ -1,0 +1,23 @@
+.modal-header
+  %button.close{:type => "button", 'data-dismiss' => "modal"} &times;
+  %h3= @event.get 'title'
+.modal-body
+  .event
+    .row-fluid
+      .image.span6
+        %img{src: @event.get("picture").medium}
+      .info.span6
+        .tickets_sold
+          = @event.get 'tickets_sold'
+          tickets sold
+    .description= @event.get 'description'
+.modal-footer
+  - if @event.collection
+    %a.prev.btn{href: "#"} Previous
+  %a.show-band.btn{href: "/bands/#{@event.get 'band_id'}"} View band
+  %a.show-venue.btn{href: "/venues/#{@event.get 'venue_id'}"} View venue
+  %a.new-payment.btn.btn-primary{href: "/events/#{@event.get 'id'}/payments/new"}
+    Reserve a ticket for
+    = "$#{@event.get 'price'}"
+  - if @event.collection
+    %a.next.btn{href: "#"} Next

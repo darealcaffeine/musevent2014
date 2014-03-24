@@ -1,0 +1,15 @@
+.modal-header
+  %button.close{:type => "button", 'data-dismiss' => "modal"} &times;
+  %h3= @band.get 'title'
+.modal-body
+  .band
+    .row-fluid
+      .image.span6
+        %img{src: @band.get('picture').medium}
+      .info.span6
+        .events_count
+          = @band.get 'events_count'
+          events
+    .description= @band.get 'description'
+.modal-footer
+  %a.show-events.btn.btn-primary{href: "/bands/#{@band.get 'id'}/events"} Show events

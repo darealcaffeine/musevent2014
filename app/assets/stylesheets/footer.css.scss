@@ -1,0 +1,37 @@
+/* Sticky footer positioning */
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.wrapper > .container-fluid, .wrapper > .container {
+  overflow: auto;
+  padding-bottom: 56px;
+}
+
+.footer {
+  position: relative;
+  margin-top: -56px;
+  height: 2em;
+  clear: both;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/*Opera Fix*/
+body:before {
+  content: "";
+  height: 100%;
+  float: left;
+  width: 0;
+  margin-top: -32767px;
+}
+
+/* Footer elements styling */
+.footer {
+  border-top: 2px solid grey;
+  padding-top: 10px;
+}

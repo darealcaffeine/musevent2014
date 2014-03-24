@@ -1,0 +1,23 @@
+= title "#{@payment.tickets_count} tickets for #{@payment.event_title}"
+.payment.single
+  .row-fluid
+    .main.span9
+      .image.span4= image_tag "http://placehold.it/320x240", alt: @payment.event_title
+      .description Here will be text with payment info and event state.
+    .side.span3
+      .info
+        .payment-id
+          = @payment.id
+          %span unique ID of your payment
+        .tickets
+          = @payment.tickets_count
+          %span tickets purchased
+        .time
+          = @payment.created_at.strftime "%d.%m.%Y %H:%M %Z"
+          %span payment time
+        %ul.actions
+          - if @payment.event.raising?
+            %li= link_to "Cancel payment", @payment, method: :delete, class: "btn btn-danger", confirm: "Payment will be canceled, are you sure?"
+          %li= link_to "View venue information", @payment.venue
+          %li= link_to "View band information", @payment.band
+          %li= link_to "View event information", @payment.event

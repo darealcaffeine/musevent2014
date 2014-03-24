@@ -1,0 +1,8 @@
+%a.show-venue{href: "/venues/#{@venue.get 'id'}"}
+  %h3= @venue.get 'title'
+  .image
+    %img.thumbnail{src: @venue.get('picture').medium, alt: @venue.get 'title'}
+.description= @venue.get 'description'
+.actions.item-bottom
+  %a.show-venue.btn{href: "/venues/#{@venue.get 'id'}"} More info
+  %a.show-events.btn.btn-primary{href: "/venues/#{@venue.get 'id'}/events"} Events

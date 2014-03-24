@@ -1,0 +1,25 @@
+!= mse_title "Payment for #{@payment.get 'event_title'} succeeded"
+.row-fluid
+  .main.span9
+    - if 'planned' == @payment.get 'event_state'
+      %h2
+        You have purchased tickets for
+        = @payment.get 'event_title'
+      Now funds are reserved on your payment account, and it will be charged soon. You can see tickets on
+      %a{href: "/payments"} your payments
+      page here at Musevent.
+    - else
+      %h2
+        You have reserved tickets for
+        = @payment.get 'event_title'
+      Now funds are reserved on your payment account, and if there will be enough tickets sold to fund this event, your
+      payment account will be charged. Either way, funds will be released and you will be able to use them.
+      Once event state is changed, we will send you a notification.
+
+    In sidebar you can see list of options. Choose one of them and have a good time with Musevent!
+  .side.span3
+    %ul.actions
+      %li
+        %a.btn.btn-large{href: "/payments/#{@payment.get 'id'}"} Review this payment
+        %a.btn.btn-large{href: "/payments"} View your tickets
+        %a.btn.btn-primary.btn-large{href: "/events"} Back to events list

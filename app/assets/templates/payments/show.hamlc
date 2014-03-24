@@ -1,0 +1,22 @@
+.modal-header
+  %button.close{:type => "button", 'data-dismiss' => "modal"} &times;
+  %h3
+    Payment for
+    = @payment.get 'event_title'
+.modal-body
+  .info
+    .payment-id
+      = @payment.get 'id'
+      %span unique ID of your payment
+    .tickets
+      = @payment.get 'tickets_count'
+      %span tickets purchased
+    .time
+      = @payment.get 'created_at'
+      %span payment time
+.modal-footer
+  - if 'raising' == @payment.get('state')
+    %a.btn.btn-danger{method: 'delete', href: "/payments/#{@payment.get 'id'}"} Cancel payment
+  %a.btn{href: "/venues/#{@payment.get 'venue_id'}"} View venue
+  %a.btn{href: "/bands/#{@payment.get 'band_id'}"} View band
+  %a.btn{href: "/events/#{@payment.get 'event_id'}"} View event

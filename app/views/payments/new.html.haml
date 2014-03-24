@@ -1,0 +1,17 @@
+= title 'Add payment for ' << @event.title
+
+I want to go, I know what I am doing with my payment account, disclaimer, etc.
+
+= form_for @payment, url: event_payments_url(@event), html: {class: "form-horizontal"} do |f|
+  = render "shared/form_errors", object: @payment
+  %fieldset
+    .control-group
+      = f.label :tickets_count, class: 'control-label'
+      .controls
+        = f.text_field :tickets_count
+    .control-group
+      = f.label "Pay with", class: 'control-label'
+      .controls
+        = f.select :processor_type, {'Amazon' => 'AmazonProcessor', 'DummyTest' => 'DummyProcessor'}
+  .form-actions
+    = f.submit "Submit payment", class: 'btn btn-primary'

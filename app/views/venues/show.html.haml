@@ -1,0 +1,9 @@
+= title @venue.title
+.venue.single
+  .row-fluid
+    .main.span9
+      .image.span4= link_to image_tag(@venue.picture.url(:medium), alt: @venue.title), @venue.picture.url, target: 'blank'
+      .description= @venue.description
+    .side.span3
+      %ul.actions
+        %li= link_to "Show events", venue_events_path(@venue), class: "btn btn-primary btn-large"

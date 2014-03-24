@@ -1,0 +1,44 @@
+= title @event.title
+.event.single{class: @event.state}
+  %h2= @event.date.strftime "%d %B %Y: "
+  .row-fluid
+    .main.span9
+      .image.span4= link_to image_tag(@event.picture.url(:medium), alt: @event.title), @event.picture.url, target: 'blank'
+      %h3
+        = link_to @event.band_title, @event.band
+        at
+        = link_to @event.venue_title, @event.venue
+      .description= @event.description
+    .side.span3
+      .info
+        .tickets
+          = @event.tickets_sold
+          tickets sold
+          %span
+            - case @event.state
+              - when 'raising'
+                = "of #{@event.min_tickets} required"
+              - when 'planned'
+                = "of #{@event.max_tickets} available"
+        .time
+          - case @event.state
+            - when 'raising'
+              = distance_of_time_in_words_to_now @event.raising_end
+              left
+              %span to make event happen
+            - when 'planned'
+              = distance_of_time_in_words_to_now @event.date
+              left
+              %span to buy tickets before event
+        %ul.actions
+          - unless @event.archived?
+            %li
+              %a{href: new_event_payment_url(@event), class: 'btn btn-primary btn-large'}
+                - case @event.state
+                  - when 'raising'
+                    Preorder a ticket for
+                  - when 'planned'
+                    Buy a ticket for
+                = number_to_currency @event.price
+          %li= link_to "View venue information", @event.venue
+          %li= link_to "View band information", @event.band

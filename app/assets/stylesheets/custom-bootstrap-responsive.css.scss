@@ -1,0 +1,35 @@
+// Responsive.css.scss
+// For phone and tablet devices
+// -------------------------------------------------------------
+
+
+// REPEAT VARIABLES & MIXINS
+// -------------------------
+// Required since we compile the responsive stuff separately
+
+@import "bootstrap/_variables.scss"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/_mixins.scss";
+
+// RESPONSIVE CLASSES
+// ------------------
+
+@import "bootstrap/_responsive-utilities.scss";
+
+// MEDIA QUERIES
+// ------------------
+
+// Phones to portrait tablets and narrow desktops
+@import "bootstrap/_responsive-767px-max.scss";
+
+// Tablets to regular desktops
+@import "bootstrap/_responsive-768px-979px.scss";
+
+// Large desktops
+@import "bootstrap/_responsive-1200px-min.scss";
+
+
+// RESPONSIVE NAVBAR
+// ------------------
+
+// From 979px and below, show a button to toggle navbar contents
+@import "bootstrap/custom-responsive-navbar.scss";

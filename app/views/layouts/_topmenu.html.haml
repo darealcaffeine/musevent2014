@@ -1,0 +1,12 @@
+%ul.nav
+  %li= link_to "Events", events_path
+  %li= link_to "Venues", venues_path
+  %li= link_to "Bands", bands_path
+  - if user_signed_in?
+    %li= link_to "My Payments", payments_path, ref: 'backbone'
+    %li= link_to "Log Out", destroy_user_session_path, method: :delete, rel: 'external'
+    - if can? :access, :rails_admin
+      %li= link_to "Admin panel", "/admin/", rel: 'external'
+  - else
+    %li= link_to "Log In", new_user_session_path
+    %li= link_to "Sign Up", new_user_registration_path

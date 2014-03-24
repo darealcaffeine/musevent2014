@@ -1,0 +1,15 @@
+%p
+  By this email we notify you,
+  = "#{@user.email},"
+  that event named
+  = link_to @event.title, @event
+  had raised enough funds and became a planned event.
+%p
+  It means that you can be sure that event will take place on
+  = @event.date
+%p
+  Also it means that we will charge your payment account for tickets soon.
+%p
+  We remind you that you can find tickets you purchased on
+  = link_to "your payments", payments_url
+  page.

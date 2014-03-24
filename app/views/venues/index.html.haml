@@ -1,0 +1,14 @@
+= title "Venues"
+= form_tag venues_url, method: 'get', class: "form-inline filter" do
+  %fieldset
+    = resource_filter "venue", @filter
+    = submit_tag "Refresh", class: "btn btn-primary"
+.venues.stacked
+  - @venues.each do |venue|
+    .venue.stacked-item{id:"venue_#{venue.id}"}
+      %h3= link_to venue.title, venue
+      .image= link_to image_tag(venue.picture.url(:medium), alt: venue.title), venue, class: "thumbnail"
+      .description= venue.description[0, 440]
+      .actions.item-bottom
+        = link_to "More info", venue, class: "btn"
+        = link_to "Events", venue_events_path(venue), class: "btn btn-primary"

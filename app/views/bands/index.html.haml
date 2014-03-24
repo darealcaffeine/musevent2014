@@ -1,0 +1,14 @@
+= title 'Bands'
+= form_tag bands_url, method: 'get', class: "form-inline filter" do
+  %fieldset
+    = resource_filter "band", @filter
+    = submit_tag "Refresh", class: "btn btn-primary"
+.bands.stacked
+  - @bands.each do |band|
+    .band.stacked-item{id:"band#{band.id}"}
+      %h3= link_to band.title, band
+      .image= link_to image_tag(band.picture.url(:medium), alt: band.title), band, class: "thumbnail"
+      .description= band.description[0, 440]
+      .actions.item-bottom
+        = link_to "More info", band, class: "btn"
+        = link_to "Events", band_events_path(band), class: "btn btn-primary"

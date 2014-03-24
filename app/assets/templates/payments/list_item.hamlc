@@ -1,0 +1,5 @@
+%td= @payment.get 'event_title'
+%td= @payment.get 'tickets_count'
+%td= @payment.get 'state'
+%td
+  %a.show-payment{href: "/payments/#{@payment.get 'id'}"} View info

@@ -1,0 +1,11 @@
+.pagination {
+  text-align: center;
+  width: 100%;
+  clear: both;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    height: 72px
+  }
+}

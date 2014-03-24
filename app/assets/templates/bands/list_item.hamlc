@@ -1,0 +1,8 @@
+%a.show-band{href: "/bands/#{@band.get 'id'}"}
+  %h3= @band.get 'title'
+  .image
+    %img.thumbnail{src: @band.get('picture').medium, alt: @band.get 'title'}
+.description= @band.get 'description'
+.actions.item-bottom
+  %a.show-band.btn{href: "/bands/#{@band.get 'id'}"} More info
+  %a.show-events.btn.btn-primary{href: "/bands/#{@band.get 'id'}/events"} Events

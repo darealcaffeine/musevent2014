@@ -1,0 +1,20 @@
+/*
+ *= require _bootstrap
+ *= require_self
+ *= require_directory .
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.modal form {
+  margin-bottom: 0;
+}
+
+.loader {
+  position: absolute;
+  top: 4em;
+  right: 1em;
+}

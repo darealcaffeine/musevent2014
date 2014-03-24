@@ -1,0 +1,12 @@
+development: &dev
+ access_key_id: AKIAJ3GZSWPVBP23BYEA
+ secret_access_key: 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
+ bucket: musevent
+
+test:
+  <<: *dev
+
+production:
+ access_key_id: AKIAJ3GZSWPVBP23BYEA
+ secret_access_key: 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
+ bucket: musevent-prod

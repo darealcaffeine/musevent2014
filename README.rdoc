@@ -1,0 +1,2 @@
+To load default admin, execute `bundle exec rake db:seed`
+Default admin credentials are admin@example.com/password
